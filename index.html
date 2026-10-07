@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>장아름</title>
+<meta name="description" content="모르는 것을 끝까지 묻고, 사람의 말을 끝까지 듣는 사람, 장아름을 소개합니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* 아름 소개 사이트 — 질문 공책을 닮은 화면 */
+:root {
+  --paper: #f7f4ec; --paper-2: #efeadd; --card: #fffdf7;
+  --ink: #1f2a2e; --ink-2: #4a565a; --ink-3: #6f7a7d;
+  --rule: #d9d2c0; --margin: #d7907c; --sea: #1f6f78; --sea-soft: #dcebea;
+  --tag-control: #2f6f5e; --tag-control-bg: #dfeee6;
+  --tag-people: #8a4d2f; --tag-people-bg: #f5e3d6;
+  --tag-motive: #2c4f86; --tag-motive-bg: #e0e8f5;
+  --serif: "Gowun Batang", "Noto Serif KR", "AppleMyungjo", serif;
+  --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161b1d; --paper-2: #1c2326; --card: #20282b;
+    --ink: #e8e4da; --ink-2: #bdb8ad; --ink-3: #8f9a9c;
+    --rule: #34403f; --margin: #a5604f; --sea: #7cc3c8; --sea-soft: #1e3639;
+    --tag-control: #9fd6c0; --tag-control-bg: #1f3a31;
+    --tag-people: #f0bf9d; --tag-people-bg: #3d2a1f;
+    --tag-motive: #a9c3ef; --tag-motive-bg: #233149;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+section[id], article[id] { scroll-margin-top: 24px; }
+.story-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 20px; }
+.story-nav a { padding: 7px 14px; border: 1px solid var(--rule); border-radius: 999px; background: var(--card); color: var(--ink-2); font-size: 14px; text-decoration: none; }
+.story-nav a:hover { border-color: var(--sea); color: var(--sea); }
+.hero-action { display: inline-flex; align-items: center; gap: 16px; padding: 12px 20px; border-radius: 12px; background: var(--sea-soft); color: var(--sea); font-size: 15px; font-weight: 600; text-decoration: none; }
+.hero-action:hover { text-decoration: underline; text-underline-offset: 4px; }
+.story-nav a:focus-visible, .hero-action:focus-visible, .course-return a:focus-visible { outline: 3px solid var(--sea); outline-offset: 4px; }
+.course-return { margin-top: 24px; font-size: 14px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.8; word-break: keep-all; overflow-wrap: break-word; }
+a { color: var(--sea); }
+h1, h2, h3 { font-weight: 700; line-height: 1.4; margin: 0; }
+.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 16px; }
+.skip { position: absolute; left: -9999px; top: 0; background: var(--ink); color: var(--paper); padding: 8px 12px; }
+.skip:focus { left: 8px; top: 8px; z-index: 10; }
+.hero { padding: clamp(72px, 16vh, 160px) 0 clamp(48px, 9vh, 96px); border-bottom: 1px solid var(--rule);
+  background: repeating-linear-gradient(to bottom, transparent 0 39px, color-mix(in srgb, var(--rule) 55%, transparent) 39px 40px); }
+.hero-meta { margin: 0 0 18px; font-size: 14px; letter-spacing: 0.04em; color: var(--ink-3); }
+.hero-name { font-family: var(--serif); font-size: clamp(56px, 14vw, 104px); letter-spacing: -0.02em; line-height: 1.05; }
+.hero-intro { margin: 22px 0 0; font-family: var(--serif); font-size: clamp(20px, 4.6vw, 28px); line-height: 1.6; color: var(--ink-2); max-width: 26em; }
+.story { padding-top: 56px; padding-bottom: 32px; }
+.chapter { position: relative; padding: 8px 0 28px 28px; border-left: 2px solid var(--margin); margin-left: 4px; }
+.chapter + .chapter { padding-top: 20px; }
+.chapter-no { margin: 0 0 4px; font-size: 13px; color: var(--margin); letter-spacing: 0.1em; }
+.chapter h2 { font-family: var(--serif); font-size: clamp(21px, 4.4vw, 26px); margin-bottom: 14px; }
+.chapter p { font-family: var(--serif); font-size: 18px; line-height: 1.95; margin: 0 0 16px; }
+.closing { margin-top: 28px !important; padding: 18px 20px; background: var(--sea-soft); border-radius: 4px; color: var(--ink); }
+.tag { display: inline-block; vertical-align: 2px; margin-left: 4px; padding: 1px 8px; border-radius: 999px; font-family: var(--sans); font-size: 12px; font-weight: 500; line-height: 1.7; white-space: nowrap; }
+.tag-control { color: var(--tag-control); background: var(--tag-control-bg); }
+.tag-people  { color: var(--tag-people);  background: var(--tag-people-bg); }
+.tag-motive  { color: var(--tag-motive);  background: var(--tag-motive-bg); }
+.record { background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 64px 0; }
+.record h2, .works h2, .docs h2 { font-family: var(--serif); font-size: clamp(22px, 4.6vw, 28px); }
+.lead { color: var(--ink-2); margin: 10px 0 28px; font-size: 15px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.stat { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 16px 14px; display: flex; flex-direction: column; }
+.stat-label { margin: 0; font-size: 14px; color: var(--ink-3); }
+.stat-value { margin: 2px 0 4px; line-height: 1.1; }
+.stat-num { font-family: var(--serif); font-size: 48px; font-weight: 700; color: var(--sea); font-variant-numeric: tabular-nums; }
+.stat-unit { font-size: 18px; margin-left: 3px; color: var(--ink-2); }
+.stat-detail { margin: 0 0 12px; font-size: 14px; line-height: 1.6; color: var(--ink-2); }
+.stat-source { margin: auto 0 0; padding-top: 10px; border-top: 1px dashed var(--rule); font-size: 12px; line-height: 1.6; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 2px 10px; }
+.stats-period, .stats-loading { grid-column: 1 / -1; margin: 4px 0 0; font-size: 13px; color: var(--ink-3); }
+.sub { margin: 40px 0 14px; font-size: 17px; font-family: var(--serif); }
+.paras { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.para { background: var(--card); border: 1px solid var(--rule); border-left: 3px solid var(--sea); border-radius: 4px; padding: 14px 16px; }
+.para-title { margin: 0 0 4px; font-size: 13px; font-weight: 600; color: var(--sea); }
+.para-text { margin: 0; font-family: var(--serif); font-size: 16px; line-height: 1.85; }
+.para-src { margin: 6px 0 0; font-size: 12px; color: var(--ink-3); }
+.works { padding-top: 64px; padding-bottom: 24px; }
+.works h2 { margin-bottom: 24px; }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 24px 22px; margin-bottom: 16px; }
+.card p { margin: 0 0 12px; font-size: 16px; line-height: 1.85; }
+.card-kicker { font-size: 13px !important; color: var(--ink-3); margin-bottom: 8px !important; }
+.card-title { font-family: var(--serif); font-size: 20px; line-height: 1.55; margin-bottom: 14px; }
+.note { font-size: 14px !important; color: var(--ink-3); margin: 0 !important; padding-top: 10px; border-top: 1px dashed var(--rule); }
+.badge { display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--margin); color: var(--margin); font-size: 12px; line-height: 1.7; }
+.card-pending { background: transparent; border-style: dashed; }
+.slot { border: 1px dashed var(--rule); border-radius: 4px; padding: 12px 14px; margin: 4px 0 16px; background: var(--paper-2); }
+.slot-label { font-size: 13px !important; font-weight: 600; color: var(--ink-2); margin: 0 0 2px !important; }
+.slot-text { font-size: 14px !important; color: var(--ink-3); margin: 0 !important; }
+.btn { font: inherit; font-size: 15px; padding: 10px 16px; border-radius: 4px; border: 1px solid var(--rule); background: var(--paper-2); color: var(--ink-3); cursor: not-allowed; max-width: 100%; }
+.docs { padding-top: 40px; padding-bottom: 72px; }
+.doc-list { list-style: none; margin: 20px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.doc-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 2px; border-bottom: 1px solid var(--rule); }
+.doc-name { font-family: var(--serif); font-size: 18px; }
+.doc-state { font-size: 13px; color: var(--ink-3); }
+.docs-note { margin: 20px 0 0; font-size: 15px; color: var(--ink-2); }
+.foot { border-top: 1px solid var(--rule); background: var(--paper-2); padding: 36px 0 48px; }
+.foot-label { margin: 0 0 4px; font-size: 13px; color: var(--ink-3); }
+.foot-mail { font-family: var(--serif); font-size: 19px; word-break: break-all; }
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .stats { grid-template-columns: 1fr; }
+  .stat { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 12px; }
+  .stat-label { width: 100%; }
+  .stat-value { margin: 0; }
+  .stat-detail { margin: 0; flex: 1 1 140px; }
+  .stat-source { width: 100%; margin-top: 10px; }
+  .stat-num { font-size: 40px; }
+  .chapter { padding-left: 18px; margin-left: 0; }
+  .chapter p { font-size: 17px; }
+  .card { padding: 20px 16px; }
+  .card-title { font-size: 18px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-name, .hero-intro { animation: rise 0.7s ease-out both; }
+  .hero-intro { animation-delay: 0.12s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}
+a.btn { display: inline-block; cursor: pointer; color: inherit; text-decoration: none; border-color: currentColor; }
+a.btn:hover { background: transparent; }
+</style>
+</head>
+<body>
+<a class="skip" href="#story">본문으로 건너뛰기</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-meta">SKT ALEPH 대구 A반 교육생</p>
+    <h1 class="hero-name">장아름</h1>
+    <p class="hero-intro">모르는 것을 끝까지 묻고, 사람의 말을 끝까지 듣는 사람</p>
+    <nav class="story-nav" aria-label="소개 사이트 메뉴">
+      <a href="#story">나의 이야기</a>
+      <a href="#record">학습 기록</a>
+      <a href="#works">논문과 앱</a>
+      <a href="#docs">제출 문서</a>
+    </nav>
+    <a class="hero-action" href="https://aleph-seed-brb.vercel.app/">내 논문에서 출발한 앱 사용해 보기 <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+
+<main>
+  <article id="story" class="story wrap" aria-label="아름의 이야기">
+    <section class="chapter">
+      <p class="chapter-no" aria-hidden="true">하나</p>
+      <h2>눈에 띄는 것이 두려워 손을 들지 못하던 때가 있었습니다</h2>
+      <p>2011년, 고등학교 2학년 때 아버지 직장을 따라 대구에서 작은 농촌 마을로 전학했습니다. 몇몇 친구들은 제가 도시에서 왔다는 점과 겉모습을 트집 잡아 저를 놀리기 시작했습니다. 특별한 이유는 없었습니다. 그냥 제가 마음에 들지 않는다는 것이었고, 어느 날은 학교 뒤 좁은 골목으로 불려 가 거친 말과 위협을 듣기도 했습니다.</p>
+      <p>가장 힘든 시간은 수업 시간이었습니다. 모르는 것이 있어도 손을 들 수 없었습니다. 눈에 띄면 또 미움받을 것 같았으니까요. 부모님께 걱정을 끼칠까 봐 집에서도 아무 말을 하지 않았습니다.</p>
+    </section>
+
+    <section class="chapter">
+      <p class="chapter-no" aria-hidden="true">둘</p>
+      <h2>친구들 덕분에 다시 손을 들었습니다</h2>
+      <p>혼자 버티던 저에게 곁을 내준 친구들이 있었습니다. 짝은 비 오는 날 우산을 제 쪽으로 기울여 주었고, 골목에서 위협을 받던 날에는 친구 둘이 달려와 저를 감싸 주었습니다. 친구들이 괴롭히던 아이들에게 "그건 장난이 아니다", "걔는 그런 애가 아니다"라며 제 진짜 모습을 알려 준 뒤로 괴롭힘은 멈췄고, 저를 찾아 주는 친구들도 많아졌습니다.</p>
+      <p class="scene">그렇게 교실이 조금씩 달라지던 어느 수학 시간, 저는 다시 손을 들어 질문했습니다. 그날부터 저는 모르는 것이 생기면 묻는 사람이 되었습니다. 시간이 지나 그때의 상황을 이해하게 되었고, 저를 힘들게 했던 친구들도 용서했습니다. <span class="tag tag-motive">자기동기력</span></p>
+    </section>
+
+    <section class="chapter">
+      <p class="chapter-no" aria-hidden="true">셋</p>
+      <h2>보건학을 공부하며 사람의 건강을 먼저 살피는 법을 배웠습니다</h2>
+      <p class="scene">대학에서 4년 동안 보건학을 공부했습니다. 산업보건과 건강증진, 공중보건과 보건교육을 배우며, 아프고 난 뒤보다 아프기 전에 무엇을 살펴야 하는지를 생각하게 되었습니다. 3년 동안은 절주·금연 동아리에서 학교와 지역사회를 대상으로 건강증진 캠페인을 했습니다. 동아리원들과 홍보자료를 만들고, 참여한 분들의 의견을 모아 다음 자료를 고쳤습니다. 산업위생관리기사 자격도 취득했습니다. <span class="tag tag-people">대인관계력</span></p>
+      <p class="scene">졸업 뒤에는 병원 코디네이터로 일했고, 저와 맞지 않아 회사로 옮겼다가 동네 카페에서 오래 일했습니다. 인공지능 학습용 데이터 구축 사업에도 참여했습니다. 저는 걱정이 많은 편이지만, 걱정을 준비로 바꾸려고 일을 맡으면 체크리스트부터 만들어 단계마다 확인합니다. 접수대에서도 카페에서도, 날카로운 말을 들으면 그 말 뒤에 어떤 사정이 있는지 먼저 살폈습니다. <span class="tag tag-control">자기조절력</span></p>
+    </section>
+
+    <section class="chapter">
+      <p class="chapter-no" aria-hidden="true">넷</p>
+      <h2>지금은 맨 앞줄에 앉아 수업마다 질문합니다</h2>
+      <p class="scene">2026년 8월 11일부터 SKT ALEPH 대구 A반에서 AI 기반 ZTNA와 XDR을 개발하고 구현하는 법을 배우고 있습니다. 저는 맨 앞줄에 앉습니다. 질문 공책 왼쪽에는 수업 내용을, 오른쪽에는 그 자리에서 묻지 못한 질문을 적습니다. 8월 말에는 늦게까지 남아 같은 실습을 몇 번이고 다시 했습니다. <span class="tag tag-motive">자기동기력</span></p>
+      <p class="scene">8월 12일에는 지하철역에서 넘어지신 할머니와 서로 다친 데가 없는지부터 확인했습니다. 9월 4일에는 지친 저녁, 택시 기사님의 이야기를 들어 드리다가 함께 웃었습니다. 9월 11일에는 조원의 2번 과제를 처음부터 끝까지 받아 적으며 도왔습니다. <span class="tag tag-people">대인관계력</span></p>
+      <p class="scene">9월 16일에는 "옛날 방식"이라는 말을 들었습니다. 서운한 마음을 앞세우는 대신 "그럼 알려 줘"라고 물었습니다. 기분보다 질문을 먼저 꺼낸 날이었습니다. <span class="tag tag-control">자기조절력</span></p>
+      <p class="scene">고등학교 교실에서 손을 들지 못하던 저는, 이번 과정의 훈련일 <span data-k="training-days">38</span>일 동안 아침과 마무리 리추얼을 하루도 빠짐없이 썼습니다. 모두 <span data-k="ritual-entries">76</span>건입니다. (출처: 리추얼 기록, 내 출석 기록)</p>
+      <p class="closing">고등학교 때 다시 손을 들었던 것처럼, 저는 지금도 모르는 것이 생기면 손을 듭니다. 그리고 다른 사람의 말은 끝까지 듣습니다. 정보보안 분야에서 일한 경력은 아직 없지만, 보건학을 공부하며 아프기 전에 먼저 살피는 법을 배웠듯이 사고가 나기 전에 위험을 먼저 찾고, 정보 노출 시 빠르게 복구할 수 있는 정보보안가가 되는 것이 제 목표입니다.</p>
+    </section>
+  </article>
+
+  <section id="record" class="record" aria-labelledby="record-title">
+    <div class="wrap">
+      <h2 id="record-title">13주 과정에서 지금까지 남긴 기록입니다</h2>
+      <p class="lead">아래 숫자는 기록 파일에서 자동으로 셉니다. 문단은 장치가 기록에서 뽑은 후보 가운데 제가 읽고 승인한 것만 싣습니다. 기록이 늘어나면 다시 셉니다.</p>
+      <div class="stats" id="stats" aria-live="polite"><div class="stat"><p class="stat-label">출석</p><p class="stat-value"><span class="stat-num">37</span><span class="stat-unit">일</span></p><p class="stat-detail">훈련일 38일 · 지각 1회 · 조퇴 0회 · 결석 0일</p><p class="stat-source"><span class="src">출처: 내 출석 기록</span><span class="basis">기준일 2026년 10월 7일</span></p></div><div class="stat"><p class="stat-label">리추얼</p><p class="stat-value"><span class="stat-num">76</span><span class="stat-unit">건</span></p><p class="stat-detail">38일 동안 아침과 마무리, 빠진 날 없음</p><p class="stat-source"><span class="src">출처: 리추얼 기록</span><span class="basis">기준일 2026년 10월 7일</span></p></div><div class="stat"><p class="stat-label">과제</p><p class="stat-value"><span class="stat-num">11</span><span class="stat-unit">개</span></p><p class="stat-detail">11개 제출 · 11개 최종 확정</p><p class="stat-source"><span class="src">출처: 내 제출 현황</span><span class="basis">기준일 2026년 10월 7일</span></p></div><p class="stats-period">기록 기간 2026년 8월 11일 ~ 2026년 10월 7일</p></div>
+      <h3 class="sub">기록에서 뽑아 제가 승인한 문단입니다</h3>
+      <ol class="paras" id="paras"><li class="para"><p class="para-title">회복탄력성 · 꾸준함 문단</p><p class="para-text">2026년 8월 11일부터 10월 7일까지 38일 동안 아침 리추얼과 마무리 리추얼을 모두 76건 썼습니다. 출석한 날 가운데 리추얼을 빠뜨린 날은 하루도 없습니다. 하루를 열 때와 닫을 때 저를 돌아본 기록이 이만큼 쌓였습니다.</p><p class="para-src">날짜 2026년 10월 7일 · 근거: 리추얼 기록, 내 출석 기록</p></li><li class="para"><p class="para-title">과제지속력 · 과제 지속 문단</p><p class="para-text">과제 11개를 모두 제출했고, 11개 모두 최종 확정을 받았습니다. 같은 기간 훈련일 38일 가운데 결석한 날은 없습니다. 지각은 1번이었고 조퇴는 없었습니다.</p><p class="para-src">날짜 2026년 10월 7일 · 근거: 내 제출 현황, 내 출석 기록</p></li><li class="para"><p class="para-title">과제지속력 · 최근 변화 문단</p><p class="para-text">최근 2주(9월 24일~10월 7일) 동안 7일 출석했고, 리추얼을 14건 썼습니다. 이 기간에 최종 확정을 받은 과제는 5개로, 앞선 2주와 같은 수입니다. 가장 최근에 확정을 받은 과제는 10월 7일의 11번 과제입니다.</p><p class="para-src">날짜 2026년 10월 7일 · 근거: 내 출석 기록, 리추얼 기록, 내 제출 현황</p></li><li class="para"><p class="para-title">자기조절력 · 9월 16일 리추얼</p><p class="para-text">기분이 상할 수 있는 말을 들었지만 그 사람의 의도는 그게 아니었을 거라 생각이 들었다. 그렇게 생각하니 괜찮았다.</p><p class="para-src">날짜 2026년 9월 16일 · 근거: 리추얼 기록 2026-09-16 「강점이 드러난 일화」</p></li><li class="para"><p class="para-title">대인관계력 · 9월 11일 리추얼</p><p class="para-text">조원분께서 과제를 도와달라 하셔서 처음부터 끝까지 알려드렸다.</p><p class="para-src">날짜 2026년 9월 11일 · 근거: 리추얼 기록 2026-09-11 「강점이 드러난 일화」</p></li><li class="para"><p class="para-title">자기동기력 · 8월 26일 리추얼</p><p class="para-text">어제 실습 과정이 어려워서 남아서 공부를 더 하다가 집에 갔다.</p><p class="para-src">날짜 2026년 8월 26일 · 근거: 리추얼 기록 2026-08-26 「강점이 드러난 일화」</p></li></ol>
+    </div>
+  </section>
+
+  <section id="works" class="works wrap" aria-labelledby="works-title">
+    <h2 id="works-title">먼저 보여 드리고 싶은 작업 두 가지입니다</h2>
+
+    <article class="card">
+      <p class="card-kicker">10번 과제 · 논문</p>
+      <h3 class="card-title">AI 챗봇 대화에서 요청 유형에 따른 개인정보(PII) 노출 확률 비교 — 번역 요청과 코드 수정 요청을 중심으로</h3>
+      <p>공개 데이터인 Trust No Bot과 WildChat-1M 어노테이션을 다시 분석해, AI 챗봇에 번역을 맡긴 대화와 코드 수정을 맡긴 대화에서 개인정보가 얼마나 드러나는지 비교했습니다. 개인정보성 내용이 들어 있는 대화는 번역 요청에서 212건 가운데 116건(54.72%), 코드 수정 요청에서 301건 가운데 13건(4.32%)이었습니다. 실명이 언급된 비율은 9.43%와 0.00%였고, Fisher 검정 결과는 p&lt;0.0001이었습니다. AI가 쓴 초안의 과장된 표현은 통계에 맞게 직접 고쳤고, 이 연구의 한계도 논문에 밝혀 두었습니다.</p>
+      <p class="note">논문 원문은 제출 문서로 보관하고 있습니다.</p>
+    </article>
+
+    <article class="card">
+      <p class="card-kicker">13번 과제 · 앱</p>
+      <h3 class="card-title">번역 전에 한 번 더</h3>
+      <p>번역기에 붙여 넣기 전에, 글 속의 이름과 연락처, 소속을 먼저 찾아 가려 주는 앱입니다. 10번 논문의 결과를 그대로 썼습니다.</p>
+      <div class="slot" role="note" aria-label="이 앱이 누구를 어떻게 돕는가">
+        <p class="slot-label">이 앱이 누구를 어떻게 돕는가</p>
+        <p class="slot-text">AI에게 번역을 맡기려는 사람이 붙여 넣은 글 속 개인정보를 먼저 가려, 번역 요청에서 개인정보가 새는 일을 줄이도록 돕습니다.</p>
+      </div>
+      <a class="btn" href="https://aleph-seed-brb.vercel.app/">앱 열어 보기</a>
+    </article>
+  </section>
+
+  <section id="docs" class="docs wrap" aria-labelledby="docs-title">
+    <h2 id="docs-title">제출한 문서는 따로 보관하고 있습니다</h2>
+    <ul class="doc-list">
+      <li><span class="doc-name">이력서</span><span class="doc-state">제출 문서</span></li>
+      <li><span class="doc-name">자기소개서</span><span class="doc-state">제출 문서</span></li>
+      <li><span class="doc-name">경력기술서</span><span class="doc-state">제출 문서</span></li>
+    </ul>
+    <p class="docs-note">대구에서 일하기를 가장 바라고, 타지도 가능합니다. 많이 배울 수 있고 같이 성장할 수 있는 곳을 찾고 있습니다.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-label">연락은 이메일로 받습니다</p>
+    <a class="foot-mail" href="mailto:reum2kr@gmail.com">reum2kr@gmail.com</a>
+    <p class="course-return"><a href="https://aleph-omega.vercel.app/cortex">ALEPH 과제로 돌아가기 <span aria-hidden="true">↗</span></a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var stats = document.getElementById('stats');
+  var paras = document.getElementById('paras');
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  function koDate(iso) {
+    var p = String(iso).split('-');
+    return Number(p[0]) + '년 ' + Number(p[1]) + '월 ' + Number(p[2]) + '일';
+  }
+  function card(label, value, unit, detail, source, basis) {
+    var c = el('div', 'stat');
+    c.appendChild(el('p', 'stat-label', label));
+    var v = el('p', 'stat-value');
+    v.appendChild(el('span', 'stat-num', String(value)));
+    v.appendChild(el('span', 'stat-unit', unit));
+    c.appendChild(v);
+    c.appendChild(el('p', 'stat-detail', detail));
+    var s = el('p', 'stat-source');
+    s.appendChild(el('span', 'src', '출처: ' + source));
+    s.appendChild(el('span', 'basis', '기준일 ' + basis));
+    c.appendChild(s);
+    return c;
+  }
+  function times(n, none) { return n === 0 ? none : n + '회'; }
+
+  fetch('data.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (d) {
+      var c = d.counts, s = d.sources, b = koDate(d.basis_date);
+      stats.textContent = '';
+      var at = c.attendance;
+      stats.appendChild(card('출석', at.on_time, '일',
+        '훈련일 ' + at.training_days + '일 · 지각 ' + at.late + '회 · 조퇴 ' + at.early + '회 · 결석 ' + at.absent + '일',
+        s.attendance, b));
+      document.querySelectorAll('[data-k]').forEach(function (n) {
+        var v = { 'ritual-days': c.rituals.days, 'ritual-entries': c.rituals.entries, 'training-days': at.training_days }[n.getAttribute('data-k')];
+        if (v !== undefined) n.textContent = String(v);
+      });
+      stats.appendChild(card('리추얼', c.rituals.entries, '건',
+        c.rituals.days + '일 동안 아침과 마무리' + (c.rituals.missed_days === 0 ? ', 빠진 날 없음' : ', 빠진 날 ' + c.rituals.missed_days + '일'),
+        s.rituals, b));
+      stats.appendChild(card('과제', c.submissions.tasks, '개',
+        c.submissions.tasks + '개 제출 · ' + c.submissions.confirmed + '개 최종 확정',
+        s.submissions, b));
+      var period = el('p', 'stats-period', '기록 기간 ' + koDate(d.period.start) + ' ~ ' + koDate(d.period.end));
+      stats.appendChild(period);
+
+      paras.textContent = '';
+      (d.site_paragraphs || []).forEach(function (p) {
+        var li = el('li', 'para');
+        var t = (p.ability_name && p.title.indexOf(p.ability_name) !== 0) ? p.ability_name + ' · ' + p.title : p.title;
+        li.appendChild(el('p', 'para-title', t));
+        li.appendChild(el('p', 'para-text', p.text));
+        li.appendChild(el('p', 'para-src', '날짜 ' + koDate(p.date) + ' · 근거: ' + (p.basis || []).join(', ')));
+        paras.appendChild(li);
+      });
+    })
+    .catch(function () {
+      /* data.json을 못 읽으면 페이지에 이미 적힌 숫자와 문단을 그대로 둡니다 */
+    });
+})();
+</script>
+
+
+</body></html>
