@@ -98,6 +98,12 @@ h1, h2, h3 { font-weight: 700; line-height: 1.4; margin: 0; }
 .doc-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 2px; border-bottom: 1px solid var(--rule); }
 .doc-name { font-family: var(--serif); font-size: 18px; }
 .doc-state { font-size: 13px; color: var(--ink-3); }
+.doc-list li.doc-link { padding: 0; }
+.doc-list a.doc-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; width: 100%; padding: 14px 2px; color: var(--ink); text-decoration: none; }
+.doc-list a.doc-row .doc-state { color: var(--sea); font-weight: 600; white-space: nowrap; }
+.doc-list a.doc-row:hover .doc-name { color: var(--sea); text-decoration: underline; text-underline-offset: 4px; }
+.doc-list a.doc-row:focus-visible { outline: 3px solid var(--sea); outline-offset: 2px; }
+.doc-desc { display: block; margin-top: 2px; font-family: var(--sans); font-size: 13px; color: var(--ink-3); }
 .docs-note { margin: 20px 0 0; font-size: 15px; color: var(--ink-2); }
 .foot { border-top: 1px solid var(--rule); background: var(--paper-2); padding: 36px 0 48px; }
 .foot-label { margin: 0 0 4px; font-size: 13px; color: var(--ink-3); }
@@ -137,7 +143,7 @@ a.btn:hover { background: transparent; }
       <a href="#story">나의 이야기</a>
       <a href="#record">학습 기록</a>
       <a href="#works">논문과 앱</a>
-      <a href="#docs">제출 문서</a>
+      <a href="#docs">이력서·문서</a>
     </nav>
     <a class="hero-action" href="https://aleph-seed-brb.vercel.app/">내 논문에서 출발한 앱 사용해 보기 <span aria-hidden="true">↗</span></a>
   </div>
@@ -210,11 +216,11 @@ a.btn:hover { background: transparent; }
   </section>
 
   <section id="docs" class="docs wrap" aria-labelledby="docs-title">
-    <h2 id="docs-title">제출한 문서는 따로 보관하고 있습니다</h2>
+    <h2 id="docs-title">이력서와 지원 문서를 바로 열어 볼 수 있습니다</h2>
     <ul class="doc-list">
-      <li><span class="doc-name">이력서</span><span class="doc-state">제출 문서</span></li>
-      <li><span class="doc-name">자기소개서</span><span class="doc-state">제출 문서</span></li>
-      <li><span class="doc-name">경력기술서</span><span class="doc-state">제출 문서</span></li>
+      <li class="doc-link"><a class="doc-row" href="resume.pdf" target="_blank" rel="noopener"><span class="doc-name">이력서<span class="doc-desc">학력 · 경력 · 자격 · 경험/활동/교육</span></span><span class="doc-state">PDF 열기 ↗</span></a></li>
+      <li class="doc-link"><a class="doc-row" href="cover-letter.pdf" target="_blank" rel="noopener"><span class="doc-name">자기소개서<span class="doc-desc">이 사이트의 이야기를 본문으로 쓴 자기소개서</span></span><span class="doc-state">PDF 열기 ↗</span></a></li>
+      <li class="doc-link"><a class="doc-row" href="career-description.pdf" target="_blank" rel="noopener"><span class="doc-name">경력기술서<span class="doc-desc">과제마다 능력 · 상황 · 행동 · 결과</span></span><span class="doc-state">PDF 열기 ↗</span></a></li>
     </ul>
     <p class="docs-note">대구에서 일하기를 가장 바라고, 타지도 가능합니다. 많이 배울 수 있고 같이 성장할 수 있는 곳을 찾고 있습니다.</p>
   </section>
